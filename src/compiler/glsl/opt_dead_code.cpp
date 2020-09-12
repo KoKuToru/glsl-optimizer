@@ -159,6 +159,11 @@ do_dead_code(exec_list *instructions, bool uniform_locations_assigned)
                continue;
          }
 
+    if (entry->var->data.mode == ir_var_shader_out) {
+       // never remove shader out
+       continue;
+    }
+
 	 entry->var->remove();
 	 progress = true;
 
